@@ -1,5 +1,5 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Head } from "@inertiajs/react";
+import { Head, Link } from "@inertiajs/react";
 
 import { Inertia } from "@inertiajs/inertia";
 
@@ -7,8 +7,6 @@ export default function Dashboard({ auth, ...props }) {
     const dataMobil = props.data.filter(
         (item) => item.pemilik === auth.user.email
     );
-
-    console.log(dataMobil);
 
     return (
         <AuthenticatedLayout
@@ -33,6 +31,13 @@ export default function Dashboard({ auth, ...props }) {
                             Data Mobil anda : {dataMobil.length}
                         </div>
                     </div>
+
+                    <Link
+                        className=" btn btn-primary h-full w-full mt-4 p-4 rounded-md"
+                        href="/formMobil"
+                    >
+                        Dashboard Mobil Kamu
+                    </Link>
                 </div>
             </div>
         </AuthenticatedLayout>

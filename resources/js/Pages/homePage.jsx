@@ -17,7 +17,13 @@ export default function homePage(props) {
                                       className=" card w-full lg:w-96 bg-base-100 shadow-xl gap-4 "
                                       key={i}
                                   >
-                                      <figure></figure>
+                                      <figure>
+                                          <img
+                                              src={`storage/${data.image}`}
+                                              alt="Gambar Mobil"
+                                              className="w-full h-32 object-cover"
+                                          />
+                                      </figure>
                                       <div className=" card-body ">
                                           <h2 className="card-title">
                                               {data.namaMobil}

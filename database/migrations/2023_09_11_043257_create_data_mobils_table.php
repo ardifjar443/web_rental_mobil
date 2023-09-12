@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->string('namaMobil');
             $table->string('deskripsi');
             $table->integer('harga');
+            $table->string('image')->nullable();
             $table->string('pemilik');
             $table->timestamps();
         });

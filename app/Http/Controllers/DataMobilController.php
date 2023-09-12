@@ -35,17 +35,25 @@ class DataMobilController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'namaMobil' => 'required|string',
+            'deskripsi' => 'required|string',
+            'harga' => 'required|numeric',
+        ]);
+
+        // Simpan gambar
+        $imagePath = $request->file('image')->store('images', 'public');
+
         $data = new dataMobil();
-        $data->namaMobil = $request -> namaMobil;
-        $data->deskripsi = $request -> deskripsi;
+        $data->namaMobil = $request->namaMobil;
+        $data->deskripsi = $request->deskripsi;
         $data->harga = $request->harga;
         $data->pemilik = auth()->user()->email;
-        $data-> save();
+        $data->image = $imagePath; // Simpan path gambar
+        $data->save();
 
-        return redirect()->back()->with('message', 'data sudah ditambahkan');
-        
-
-
+        return redirect()->back()->with('message', 'Data sudah ditambahkan');
     }
 
     /**
