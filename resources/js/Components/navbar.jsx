@@ -71,7 +71,15 @@ const Navbar = ({ user }) => {
                             className="btn btn-ghost btn-circle avatar"
                         >
                             <div className="w-10 rounded-full">
-                                <img src="/img/profil.png" alt="profil" />
+                                <img
+                                    src={
+                                        user.user === null
+                                            ? "img/profil.png"
+                                            : "/path/to/fotoProfils/" +
+                                              user.user.fotoProfil
+                                    }
+                                    alt="profil"
+                                />
                             </div>
                         </label>
                         <ul

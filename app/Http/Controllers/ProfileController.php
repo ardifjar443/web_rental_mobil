@@ -60,4 +60,29 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+    
+    public function updateProfileImage(Request $request)
+    {
+    $request->validate([
+        'fotoProfil' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Atur aturan validasi sesuai kebutuhan Anda
+    ]);
+    
+    $user = Auth::user();
+    
+    if ($request->hasFile('fotoProfil')) {
+        $profileImage = $request->file('fotoProfil');
+        $newProfileImageName = $user->id.'_fotoProfil.'.$profileImage->getClientOriginalExtension();
+
+        // Simpan gambar baru
+        $profileImage->move(public_path('path/to/fotoProfils/'), $newProfileImageName);
+        
+        // Perbarui kolom fotoProfil di model User
+        $user->fotoProfil = $newProfileImageName;
+        $user->save();
+    }
+    
+    return redirect()->back()->with('success', 'Foto profil berhasil diperbarui');
+}
+
+
 }

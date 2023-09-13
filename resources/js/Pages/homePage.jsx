@@ -4,7 +4,6 @@ import Navbar from "@/Components/navbar";
 import ListMobil from "@/Components/listMobil";
 
 export default function homePage(props) {
-    console.log(props.auth);
     return (
         <>
             <Navbar user={props.auth} />
