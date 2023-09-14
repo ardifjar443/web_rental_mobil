@@ -75,6 +75,8 @@ const Navbar = ({ user }) => {
                                     src={
                                         user.user === null
                                             ? "img/profil.png"
+                                            : user.user.fotoProfil === null
+                                            ? "img/profil.png"
                                             : "/path/to/fotoProfils/" +
                                               user.user.fotoProfil
                                     }

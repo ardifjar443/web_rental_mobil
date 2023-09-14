@@ -38,10 +38,10 @@ const ListMobil = (props) => {
                                         style={{ color: "#272343" }}
                                     >
                                         {data.namaMobil}
+                                        <span className="text-lg">
+                                            id: {data.id}
+                                        </span>
                                     </h2>
-                                    <span className="text-lg">
-                                        id: {data.id}
-                                    </span>
 
                                     <p style={{ color: "#272343" }}>
                                         {data.deskripsi}
